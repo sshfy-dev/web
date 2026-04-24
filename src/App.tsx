@@ -21,6 +21,7 @@ function App() {
       <div className="terminal" role="group" aria-label="SSH command">
         <span className="prompt">$</span>
         <code className="command">ssh vm.sshfy.dev</code>
+        <span className="cursor" aria-hidden="true" />
         <button
           type="button"
           className="copy-btn"

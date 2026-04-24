@@ -13,12 +13,12 @@
   display: inline-block;
   padding: 4px 14px;
   border-radius: 999px;
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
   font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   user-select: none;
   cursor: default;
@@ -28,9 +28,12 @@
   font-size: clamp(64px, 14vw, 120px);
   font-weight: 700;
   letter-spacing: -4px;
-  color: var(--text-h);
   margin: 0;
   line-height: 1;
+  background: linear-gradient(135deg, #c084fc 0%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .value-prop {
@@ -64,6 +67,22 @@
   background: none;
   padding: 0;
   font-size: inherit;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--accent);
+  margin-left: 1px;
+  vertical-align: middle;
+  flex-shrink: 0;
+  animation: cursor-blink 1.2s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .copy-btn {
