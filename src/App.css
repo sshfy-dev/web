@@ -54,6 +54,23 @@
   font-family: var(--mono);
   font-size: clamp(14px, 2vw, 16px);
   max-width: 100%;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+
+  &:hover {
+    border-color: var(--accent-border);
+    background: color-mix(in srgb, var(--code-bg) 85%, var(--accent) 15%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  &.terminal--copied {
+    border-color: var(--accent-border);
+  }
 }
 
 .prompt {
@@ -85,27 +102,6 @@
   50% { opacity: 0; }
 }
 
-.copy-btn {
-  margin-left: 4px;
-  padding: 3px 10px;
-  border-radius: 4px;
-  border: 1px solid var(--accent-border);
-  background: var(--accent-bg);
-  color: var(--accent);
-  font-family: var(--sans);
-  font-size: 12px;
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: opacity 0.15s;
-
-  &:hover {
-    opacity: 0.8;
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
-}
 
 @media (max-width: 480px) {
   .wordmark {

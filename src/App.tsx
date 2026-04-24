@@ -1,13 +1,23 @@
 import { useState } from 'react'
 import './App.css'
 
+const SSH_COMMAND = 'ssh vm.sshfy.dev'
+
 function App() {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = () => {
-    navigator.clipboard.writeText('ssh vm.sshfy.dev')
+    if (copied) return
+    navigator.clipboard.writeText(SSH_COMMAND)
     setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
+    setTimeout(() => setCopied(false), 1500)
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      handleCopy()
+    }
   }
 
   return (
@@ -18,18 +28,19 @@ function App() {
 
       <p className="value-prop">Persistent Firecracker VMs. SSH-first.</p>
 
-      <div className="terminal" role="group" aria-label="SSH command">
-        <span className="prompt">$</span>
-        <code className="command">ssh vm.sshfy.dev</code>
-        <span className="cursor" aria-hidden="true" />
-        <button
-          type="button"
-          className="copy-btn"
-          onClick={handleCopy}
-          aria-label="Copy SSH command"
-        >
-          {copied ? 'Copied!' : 'Copy'}
-        </button>
+      <div
+        className={`terminal${copied ? ' terminal--copied' : ''}`}
+        role="button"
+        tabIndex={0}
+        aria-label="Copy SSH command to clipboard"
+        onClick={handleCopy}
+        onKeyDown={handleKeyDown}
+      >
+        <span className="prompt" aria-hidden="true">$</span>
+        <code className="command">
+          {copied ? 'Copied!' : SSH_COMMAND}
+        </code>
+        {!copied && <span className="cursor" aria-hidden="true" />}
       </div>
     </main>
   )
