@@ -103,6 +103,25 @@
 }
 
 
+#footer {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #475569;
+  font-size: 13px;
+
+  a {
+    color: #475569;
+    text-decoration: none;
+
+    &:hover {
+      color: var(--text);
+    }
+  }
+}
+
 @media (max-width: 480px) {
   .wordmark {
     letter-spacing: -2px;
