@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-const SSH_COMMAND = 'ssh vm.sshfy.dev'
+const SSH_COMMAND = 'ssh sshfy.dev'
 
 function App() {
   const [copied, setCopied] = useState(false)
